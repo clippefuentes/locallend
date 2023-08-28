@@ -11,7 +11,10 @@ const router = new Router();
 app.use(serve(path.resolve('../dist')));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/locallend', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://127.0.0.1:27017/locallend', { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true 
+});
 
 // Define routes
 router.get('/api', (ctx, next) => {
