@@ -2,28 +2,32 @@ import path from 'path';
 import Koa from 'koa';
 import serve from 'koa-static';
 import Router from 'koa-router';
+import BodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
 
-const app = new Koa();
+import { CustomKoaApplication } from './types/App';
+
+import routes from './routes/index.ts'
+
+const app = new Koa() as CustomKoaApplication;
 const router = new Router();
 
-// Serve static files
+
 app.use(serve(path.resolve('../dist')));
 
-// Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/locallend', { 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
-});
+app.db = mongoose.connect('mongodb://127.0.0.1:27017/locallend');
 
-// Define routes
-router.get('/api', (ctx, next) => {
+router.get('/api', (ctx) => {
   ctx.body = 'Hello World from API!';
 });
 
+routes(router);
+
 app
+  .use(BodyParser())
   .use(router.routes())
   .use(router.allowedMethods());
+
 
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
