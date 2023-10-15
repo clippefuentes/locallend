@@ -2,7 +2,9 @@
 </script>
 
 <template>
-  <router-view></router-view>
+  <div class="bg-white min-h-screen">
+    <router-view></router-view>
+  </div>
 </template>
 
 <style scoped>

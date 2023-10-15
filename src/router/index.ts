@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import AboutComponent from '../components/AboutComponent.vue';
-
-const Home = { template: '<div>Home</div>' }
+import HelloWorld from '../components/HelloWorld.vue';
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: HelloWorld },
   { path: '/about', component: AboutComponent },
 ];
 
