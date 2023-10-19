@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import AboutComponent from '../views/AboutComponent.vue';
 import HelloWorld from '../views/HelloWorld.vue';
-import Login from '../views/Login.vue';
-import Register from '../views/Register.vue';
+import Login from '../views/Login/Login.vue';
+import Register from '../views/Register/Register.vue';
 
 const routes = [
   { path: '/', component: HelloWorld },

@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <div class="hero min-h-screen bg-base-200">
     <div class="hero-content flex-col lg:flex-row-reverse">
@@ -22,7 +19,18 @@
               type="email"
               placeholder="email"
               class="input input-bordered"
-              required
+              ref="emailRef"
+            />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Username</span>
+            </label>
+            <input
+              type="text"
+              placeholder="username"
+              class="input input-bordered"
+              ref="usenameRef"
             />
           </div>
           <div class="form-control">
@@ -33,7 +41,7 @@
               type="password"
               placeholder="password"
               class="input input-bordered"
-              required
+              ref="passwordRef"
             />
             <label class="label">
               <a href="#" class="label-text-alt link link-hover"
@@ -42,13 +50,50 @@
             </label>
           </div>
           <div class="form-control mt-6">
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary"
+              v-on:click="login"
+            >Register</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts">
+  import useRegister from './hooks/mixins';
+
+  const {
+    emailRef,
+    passwordRef,
+    usenameRef,
+    login
+  } = useRegister();
+
+  export default {
+    setup() {
+      return {
+        emailRef,
+        passwordRef,
+        usenameRef,
+        login
+      }
+    },
+    // methods: {
+    //   login
+    // }
+    // methods: {
+    //   login: function(event: Event) {
+    //     event.preventDefault();
+    //     console.log('email::', emailRef.value)
+    //     console.log('password::', passwordRef.value)
+    //   },
+    //   test: function() {
+    //     alert('test');
+    //   }
+    // }
+  };
+</script>
 
 <style scoped>
 </style>

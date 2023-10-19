@@ -3,6 +3,7 @@ import Koa from 'koa';
 import serve from 'koa-static';
 import Router from 'koa-router';
 import BodyParser from 'koa-bodyparser';
+import cors from '@koa/cors';
 import mongoose from 'mongoose';
 
 import { CustomKoaApplication } from './types/App';
@@ -24,6 +25,7 @@ router.get('/api', (ctx) => {
 routes(router);
 
 app
+  .use(cors())
   .use(BodyParser())
   .use(router.routes())
   .use(router.allowedMethods());

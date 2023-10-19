@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="hero min-h-screen bg-base-200">
+  <div class="hero min-h-screen bg-base-200" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
     <div class="hero-content flex-col lg:flex-row-reverse">
       <div class="text-center lg:text-left">
         <h1 class="text-5xl font-bold">Login now!</h1>

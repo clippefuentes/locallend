@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.3",
     "@types/jsonwebtoken": "^9.0.2",
+    "@types/koa__cors": "^4.0.2",
     "@types/koa-bodyparser": "^4.3.10",
     "@types/koa-router": "^7.4.4",
     "@types/koa-static": "^4.0.2",
@@ -29,6 +30,7 @@
     "vue-tsc": "^1.8.5"
   },
   "dependencies": {
+    "@koa/cors": "^4.0.0",
     "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "daisyui": "^3.6.3",
