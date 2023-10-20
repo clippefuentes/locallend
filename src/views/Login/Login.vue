@@ -1,9 +1,6 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div class="hero min-h-screen bg-base-200" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
-    <div class="hero-content flex-col lg:flex-row-reverse">
+  <div class="hero min-h-screen bg-base-200">
+    <div class="hero-content flex-col ">
       <div class="text-center lg:text-left">
         <h1 class="text-5xl font-bold">Login now!</h1>
         <p class="py-6">
@@ -16,12 +13,13 @@
         <form class="card-body">
           <div class="form-control">
             <label class="label">
-              <span class="label-text">Email</span>
+              <span class="label-text">Username</span>
             </label>
             <input
-              type="email"
-              placeholder="email"
+              type="text"
+              placeholder="username"
               class="input input-bordered"
+              ref="usenameRef"
               required
             />
           </div>
@@ -33,6 +31,7 @@
               type="password"
               placeholder="password"
               class="input input-bordered"
+              ref="passwordRef"
               required
             />
             <label class="label">
@@ -42,13 +41,51 @@
             </label>
           </div>
           <div class="form-control mt-6">
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary"
+              v-on:click="handleLogin">Login</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts">
+  import { useRouter } from 'vue-router';
+  import useLogin from './handlers';
+
+  export default {
+    setup() {
+      const router = useRouter();
+      const {
+        passwordRef,
+        usenameRef,
+        countdownRef,
+        handleLogin
+      } = useLogin(router);
+      
+      return {
+        passwordRef,
+        usenameRef,
+        countdownRef,
+        handleLogin
+      }
+    },
+    // methods: {
+    //   login
+    // }
+    // methods: {
+    //   login: function(event: Event) {
+    //     event.preventDefault();
+    //     console.log('email::', emailRef.value)
+    //     console.log('password::', passwordRef.value)
+    //   },
+    //   test: function() {
+    //     alert('test');
+    //   }
+    // }
+  };
+</script>
 
 <style scoped>
 </style>

@@ -11,10 +11,23 @@ export function register({
   email, password, username
 }: Register) {
   const reqUrl = apiUrl + 'register';
-  console.log('apiUrl:', apiUrl)
-  console.log('reqUrl', reqUrl)
   const user = {
     email, password, username
+  };
+  return axios.post(reqUrl, { ...user });
+}
+
+interface Login {
+  username: string,
+  password: string
+}
+
+export function login({ 
+  password, username
+}: Login) {
+  const reqUrl = apiUrl + 'login';
+  const user = {
+    password, username
   };
   return axios.post(reqUrl, { ...user });
 }

@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 export default {
-  jwtSecret: process.env.JWT_SECRET || ''
+  jwtSecret: process.env.VITE_JWT_SECRET || ''
 }

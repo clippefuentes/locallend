@@ -1,12 +1,10 @@
 <template>
   <div class="hero min-h-screen bg-base-200">
-    <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="hero-content flex-col">
       <div class="text-center lg:text-left">
         <h1 class="text-5xl font-bold">Register now!</h1>
         <p class="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-          id nisi.
+          
         </p>
       </div>
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -51,32 +49,42 @@
           </div>
           <div class="form-control mt-6">
             <button class="btn btn-primary"
-              v-on:click="login"
+              v-on:click="handleRegister"
             >Register</button>
           </div>
         </form>
+      </div>
+      <div v-if="successRegisterRef" class="alert alert-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>Register successfully, will redirect you to login in {{ countdownRef.toFixed() }} seconds</span>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import useRegister from './hooks/mixins';
-
-  const {
-    emailRef,
-    passwordRef,
-    usenameRef,
-    login
-  } = useRegister();
+  import { useRouter } from 'vue-router';
+  import useRegister from './handlers';
 
   export default {
     setup() {
+      const router = useRouter();
+      const {
+        emailRef,
+        passwordRef,
+        usenameRef,
+        successRegisterRef,
+        countdownRef,
+        handleRegister
+      } = useRegister(router);
+      
       return {
         emailRef,
         passwordRef,
         usenameRef,
-        login
+        successRegisterRef,
+        countdownRef,
+        handleRegister
       }
     },
     // methods: {
