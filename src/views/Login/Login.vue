@@ -71,19 +71,6 @@
         handleLogin
       }
     },
-    // methods: {
-    //   login
-    // }
-    // methods: {
-    //   login: function(event: Event) {
-    //     event.preventDefault();
-    //     console.log('email::', emailRef.value)
-    //     console.log('password::', passwordRef.value)
-    //   },
-    //   test: function() {
-    //     alert('test');
-    //   }
-    // }
   };
 </script>
 

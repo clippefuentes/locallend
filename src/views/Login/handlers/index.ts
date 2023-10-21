@@ -1,6 +1,7 @@
 import { ref } from 'vue';
 import { Router } from 'vue-router';
-import { login } from '../../../services/webApi';
+import { login } from '@/services/webApi';
+import { manageAuthToken } from '@/services/token';
 
 export default function useLogin(router: Router) {
   const usenameRef = ref();
@@ -10,15 +11,24 @@ export default function useLogin(router: Router) {
 
   function handleLogin(event: Event) {
     event.preventDefault();
-    login({
+    return login({
       password: passwordRef.value.value,
       username: usenameRef.value.value,
     })
       .then((res) => {
-        console.log('rest', res);
+        const {
+          data: {
+            token,
+            user
+          }
+        } = res;
+        console.log('token', token)
+        manageAuthToken(token)
+        router.push('/marketplace');
       })
       .catch((err) => {
         console.error(err);
+        throw err;
       });
   }
 
